@@ -1,5 +1,62 @@
-<h1>New Article</h1>
+<!-- Page header -->
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><span class="text-semibold">New Article</span></h4>
+        </div>
+    </div>
 
-<%= render 'form', article: @article %>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><%= link_to '<i class="icon-home2 position-left"></i> Home'.html_safe, naturesoft.admin_dashboard_path %></li>
+            <li><%= link_to 'Article', naturesoft.admin_articles_path %></li>
+            <li><%= link_to 'Articles', naturesoft.admin_articles_path %></li>
+            <li class="active">New Article</li>
+        </ul>
+    </div>
+</div>
+<!-- /page header -->
 
-<%= link_to 'Back', articles_path %>
+<!-- Content area -->
+<div class="content">
+    
+    <!-- Horizontal form options -->
+    <div class="row">
+        <div class="col-md-12">
+    
+            <!-- Basic layout-->
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h5 class="panel-title">New Article</h5>
+                </div>
+                
+                <div class="panel-body">
+                    <%= render 'form' %>
+                </div>
+    
+            </div>
+            <!-- /basic layout -->
+        </div>
+    </div>
+    <!-- /horizontal form options -->
+    
+    <!-- Footer -->
+    <%= render 'admin/modules/footer' %>
+    <!-- /footer -->
+    
+</div>
+
+<!-- /content area -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/notifications/pnotify.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/bootstrap_multiselect.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/assets/js/pages/form_layouts.js' %>
+<%= javascript_include_tag '/backend/assets/js/pages/form_multiselect.js' %>
+<%= javascript_include_tag '/backend/assets/js/pages/colors_primary.js' %>
+<%= javascript_include_tag '/backend/js/listing.js' %>
+<!-- /theme JS files -->

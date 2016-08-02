@@ -6,7 +6,7 @@ module Naturesoft
     
         # GET /articles
         def index
-          @articles = Article.ordered
+          @articles = Article.ordered.paginate(:page => params[:page], :per_page => 10)
         end
     
         # GET /articles/1
@@ -25,6 +25,8 @@ module Naturesoft
         # POST /articles
         def create
           @article = Article.new(article_params)
+          
+          @article.user_id = current_user if current_user.present?
     
           if @article.save
             redirect_to naturesoft.edit_admin_article_path(@article.id), notice: 'Article was successfully created.'
@@ -35,6 +37,7 @@ module Naturesoft
     
         # PATCH/PUT /articles/1
         def update
+          @article.user_id = current_user if current_user.present?
           if @article.update(article_params)
             redirect_to naturesoft.edit_admin_article_path(@article.id), notice: 'Article was successfully updated.'
           else
