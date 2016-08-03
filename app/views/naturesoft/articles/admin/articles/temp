@@ -1,0 +1,1 @@
+<%= link_to image_tag(item.image_url, size: "180x110", class: "img-rouded"), naturesoft.edit_admin_article_path(item) %>

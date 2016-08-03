@@ -1,10 +1,10 @@
-<% title "Articles" %>
+<% title t(:articles) %>
 
 <!-- Basic datatable -->
 <div class="panel panel-flat listing-form">
     <div class="panel-heading col-md-12">
-        <h5 class="panel-title col-md-6"><span class="text-semibold"><%= @title_2 %></span></h5>
-        <%= link_to "New Article", naturesoft.new_admin_article_path, class: 'btn btn-primary pull-right' %>
+        <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:articles) %></span></h5>
+        <%= link_to t(:new_article), naturesoft.new_admin_article_path, class: 'btn btn-primary pull-right' %>
     </div>
     
     <form class="listing-form" data-url="">				
@@ -12,17 +12,17 @@
             <table class="table">
                 <thead>
                     <tr class="bg-teal-800">
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Content</th>
-                        <th>Created At</th>
-                        <th class="text-center">Actions</th>
+                        <th><%= t(:image) %></th>
+                        <th><%= t(:title) %></th>
+                        <th><%= t(:content) %></th>
+                        <th><%= t(:created_at) %></th>
+                        <th class="text-center"><%= t(:actions) %></th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @articles.each do |item| %>
                         <tr>
-                            <td><%= link_to image_tag(item.image_url, size: "180x110", class: "img-rouded"), naturesoft.edit_admin_article_path(item) %></td>
+                            <td></td>
                             <td><%= item.title %></td>
                             <td><%= truncate(strip_tags(item.content.html_safe), length: 150) %></td>
                             <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
@@ -35,10 +35,10 @@
         
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li>
-                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i> Edit'.html_safe, naturesoft.edit_admin_article_path(item) %>
+                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), naturesoft.edit_admin_article_path(item) %>
                                             </li>
                                             <li>
-                                                <%= link_to '<i class="icon-cross2"></i> Delete'.html_safe, naturesoft.admin_article_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
+                                                <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft.admin_article_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
                                             </li>
                                         </ul>
                                     </li>

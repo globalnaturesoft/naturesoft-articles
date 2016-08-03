@@ -1,0 +1,15 @@
+en:
+  # Articles -------------------------------------
+  articles: "Articles"
+  new_article: "New Article"
+  edit_article: "Edit Article"
+  edit: "Edit"
+  delete: "Delete"
+  image: "Image"
+  title: "Title"
+  content: "Content"
+  created_at: "Created At"
+  actions: "Actions"
+  save: "Save"
+  cancel: "Cancel"
+  # Articles-------------------------------------

@@ -3,18 +3,16 @@ module Naturesoft
     module Admin
       class ArticlesController < Naturesoft::Admin::AdminController
         before_action :set_article, only: [:show, :edit, :update, :destroy]
-        before_filter :variable_controller
+        before_action :default_breadcrumb
         
-        def variable_controller
-          @title_1 = "Article"
-          @title_2 = "Articles"
-          @link = naturesoft.admin_articles_path
+        # add top breadcrumb
+        def default_breadcrumb
+          add_breadcrumb "Article", naturesoft.admin_articles_path
+          add_breadcrumb "Articles", naturesoft.admin_articles_path
         end
     
         # GET /articles
         def index
-          add_breadcrumb "Article", naturesoft.admin_articles_path
-          add_breadcrumb "Articles", naturesoft.admin_articles_path
           @articles = Article.ordered.paginate(:page => params[:page], :per_page => 10)
         end
     
@@ -25,16 +23,12 @@ module Naturesoft
         # GET /articles/new
         def new
           @article = Article.new
-          add_breadcrumb "Article", naturesoft.admin_articles_path
-          add_breadcrumb "Articles", naturesoft.admin_articles_path
-          add_breadcrumb "New Article"
+          add_breadcrumb "New Article", nil,  class: "active"
         end
     
         # GET /articles/1/edit
         def edit
-          add_breadcrumb "Article", naturesoft.admin_articles_path
-          add_breadcrumb "Articles", naturesoft.admin_articles_path
-          add_breadcrumb "Edit Article"
+          add_breadcrumb "Edit Article", nil,  class: "active"
         end
     
         # POST /articles
