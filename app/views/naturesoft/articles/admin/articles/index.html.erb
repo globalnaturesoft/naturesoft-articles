@@ -22,7 +22,7 @@
     <!-- Basic datatable -->
     <div class="panel panel-flat listing-form">
         <div class="panel-heading col-md-12">
-            <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_articles) %></span></h5>
+            <h5 class="panel-title col-md-6"><span class="text-semibold">Articles</span></h5>
             <%= link_to "New Article", naturesoft.new_admin_article_path, class: 'btn btn-primary pull-right' %>
         </div>
         
@@ -57,7 +57,7 @@
                                                     <%= link_to '<i class="glyphicon glyphicon-edit"></i> Edit'.html_safe, naturesoft.edit_admin_article_path(item) %>
                                                 </li>
                                                 <li>
-                                                    <%= link_to '<i class="icon-cross2"></i> Delete'.html_safe, "#delete_article", url: naturesoft.admin_article_path(item) , class: "backend_delete_item" %>
+                                                    <%= link_to '<i class="icon-cross2"></i> Delete'.html_safe, naturesoft.admin_article_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
                                                 </li>
                                             </ul>
                                         </li>
@@ -79,10 +79,6 @@
         </form>
     </div>
     <!-- /basic datatable -->
-    
-    <!-- Footer -->
-    <%= render 'admin/modules/footer' %>
-    <!-- /footer -->
     
 </div>
 

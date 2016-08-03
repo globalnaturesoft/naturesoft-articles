@@ -26,7 +26,7 @@ module Naturesoft
         def create
           @article = Article.new(article_params)
           
-          @article.user_id = current_user if current_user.present?
+          @article.user = current_user
     
           if @article.save
             redirect_to naturesoft.edit_admin_article_path(@article.id), notice: 'Article was successfully created.'
@@ -37,7 +37,6 @@ module Naturesoft
     
         # PATCH/PUT /articles/1
         def update
-          @article.user_id = current_user if current_user.present?
           if @article.update(article_params)
             redirect_to naturesoft.edit_admin_article_path(@article.id), notice: 'Article was successfully updated.'
           else
