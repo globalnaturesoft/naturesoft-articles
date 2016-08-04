@@ -1,15 +1,23 @@
 en:
-  # Articles -------------------------------------
+  # Modular Articles -------------------------------------
   articles: "Articles"
   new_article: "New Article"
   edit_article: "Edit Article"
+  
+  article_categories: "Article Categories"
+  new_article_category: "New Article Category"
+  edit_article_category: "Edit Article Category"
+  related_categories: "Related Categories"
+  
   edit: "Edit"
   delete: "Delete"
   image: "Image"
   title: "Title"
   content: "Content"
+  description: "Description"
   created_at: "Created At"
   actions: "Actions"
   save: "Save"
   cancel: "Cancel"
-  # Articles-------------------------------------
+  placeholder_article_categories: "Choose article categories"
+  # Modular Articles-------------------------------------

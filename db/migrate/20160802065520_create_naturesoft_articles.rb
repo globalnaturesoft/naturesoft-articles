@@ -4,7 +4,7 @@ class CreateNaturesoftArticles < ActiveRecord::Migration[5.0]
       t.string :image_url
       t.string :title
       t.text :content
-      t.references :user, index: true, foreign_key: :naturesoft_users
+      t.references :user, index: true, references: :naturesoft_users
 
       t.timestamps
     end

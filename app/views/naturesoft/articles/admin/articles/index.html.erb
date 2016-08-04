@@ -1,13 +1,48 @@
 <% title t(:articles) %>
 
-<!-- Basic datatable -->
-<div class="panel panel-flat listing-form">
-    <div class="panel-heading col-md-12">
-        <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:articles) %></span></h5>
-        <%= link_to t(:new_article), naturesoft.new_admin_article_path, class: 'btn btn-primary pull-right' %>
-    </div>
+<div class="text-right">
+    <%= link_to "#{t(:new_article)} <i class=\"icon-plus22 position-right\"></i>".html_safe, naturesoft.new_admin_article_path, class: 'btn btn-primary' %>
+</div>
+<br />
+
+<form class="listing-form">
     
-    <form class="listing-form" data-url="">				
+    <div class="panel panel-flat">
+        <div class="panel-body filter-box">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label><%= t(:articles) %></label>
+                        <%= select_tag(:article_id, options_from_collection_for_select(Naturesoft::Articles::Article.all, :id, :title, :selected => params[:article_id]), include_blank: t(:all), class: "select2") %>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label><%= t(:sort_by) %></label>
+                        <%= select_tag(:sort_by, options_for_select(Naturesoft::Articles::Article.sort_by, :selected => params[:sort_by]), class: "select2") %>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label><%= t(:sort_order) %></label>
+                        <%= select_tag(:sort_orders, options_for_select(Naturesoft::Articles::Article.sort_orders, :selected => params[:sort_orders]), class: "select2") %>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group has-feedback">
+                        <label><%= t(:search) %></label>
+                        <input type="text" name="keywords" class="form-control" placeholder="Enter search..." value="<%= params[:keywords] %>">
+                        <div class="form-control-feedback">
+                            <i class="icon-search4 text-size-base"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                
+    <!-- Basic datatable -->
+    <div class="panel panel-flat">
         <div class="table-container">
             <table class="table">
                 <thead>
@@ -23,7 +58,14 @@
                     <% @articles.each do |item| %>
                         <tr>
                             <td></td>
-                            <td><%= item.title %></td>
+                            <td>
+                                <%= item.title %><br/><br/>
+                                <% if item.approved == true %>
+                                    <span class="label bg-success"><%= t(:approved) %></span>
+                                <% else %>
+                                    <span class="label bg-danger"><%= t(:not_yet_approved) %></span>
+                                <% end %>
+                            </td>
                             <td><%= truncate(strip_tags(item.content.html_safe), length: 150) %></td>
                             <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                             <td class="text-center">
@@ -34,6 +76,9 @@
                                         </a>
         
                                         <ul class="dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                <%= link_to '<i class="glyphicon glyphicon-ok"></i> '.html_safe + t(:approve), naturesoft.approve_admin_articles_path(id: item.id) %>
+                                            </li>
                                             <li>
                                                 <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), naturesoft.edit_admin_article_path(item) %>
                                             </li>
@@ -57,6 +102,6 @@
                 </div>
             </div>
         </div>
-    </form>
-</div>
+    </div>
+</form>
 <!-- /basic datatable -->

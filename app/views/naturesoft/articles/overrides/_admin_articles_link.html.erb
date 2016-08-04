@@ -1,8 +1,11 @@
 <li>
     <a href="#"><i class="icon-pencil6"></i> <span>Article</span></a>
     <ul>
-        <li class="<%= active(naturesoft.admin_articles_path) %>">
-            <%= link_to "Articles", naturesoft.admin_articles_path %>
+        <li<% if["naturesoft/articles/admin/articles"].include?(params[:controller]) %>class="active"<% end %>>
+            <%= link_to t(:articles), naturesoft.admin_articles_path %>
+        </li>
+        <li<% if["naturesoft/articles/admin/article_categories"].include?(params[:controller]) %>class="active"<% end %>>
+            <%= link_to t(:categories), naturesoft.admin_article_categories_path %>
         </li>
     </ul>
 </li>

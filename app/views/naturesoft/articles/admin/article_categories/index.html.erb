@@ -1,0 +1,115 @@
+<% title t(:article_categories) %>
+
+<!-- Basic datatable -->
+<div class="panel panel-flat listing-form">
+    <div class="panel-heading col-md-12">
+        <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:article_categories) %></span></h5>
+        <%= link_to t(:new_article), naturesoft.new_admin_article_category_path, class: 'btn btn-primary pull-right' %>
+    </div>
+    
+    <form class="listing-form" data-url="">				
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr class="bg-teal-800">
+                        <th><%= t(:title) %></th>
+                        <th><%= t(:description) %></th>
+                        <th><%= t(:created_at) %></th>
+                        <th class="text-center"><%= t(:actions) %></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @article_categories.each do |item| %>
+                    <% if item.parent.count == 0 %>
+                        <% item.update_level(1) %>
+                        <tr>
+                            <td><strong><%= link_to item.name, naturesoft.edit_admin_article_category_path(item) %></strong></td>
+                            <td><%= truncate(strip_tags(item.description), length: 150) %></td>
+                            <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                            <td class="text-center">
+                                <ul class="icons-list">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="icon-menu9"></i>
+                                        </a>
+        
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), naturesoft.edit_admin_article_category_path(item) %>
+                                            </li>
+                                            <li>
+                                                <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft.admin_article_category_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <% item.children.each do |child_1| %>
+                            <% child_1.update_level(2) %>
+                            <tr>
+                                <td><strong>--- <%= link_to child_1.name, naturesoft.edit_admin_article_category_path(child_1) %></strong></td>
+                                <td><%= truncate(strip_tags(child_1.description), length: 150) %></td>
+                                <td><%= child_1.created_at.strftime("%d/%m/%Y") %></td>
+                                <td class="text-center">
+                                    <ul class="icons-list">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <i class="icon-menu9"></i>
+                                            </a>
+            
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li>
+                                                    <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), naturesoft.edit_admin_article_category_path(child_1) %>
+                                                </li>
+                                                <li>
+                                                    <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft.admin_article_category_path(child_1), method: :delete, data: {confirm: 'Are you sure?'} %>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <% child_1.children.each do |child_2| %>
+								<% child_2.update_level(3) %>
+                                <tr>
+                                    <td><strong>--------- <%= link_to child_2.name, naturesoft.edit_admin_article_category_path(child_2) %></strong></td>
+                                    <td><%= truncate(strip_tags(child_2.description), length: 150) %></td>
+                                    <td><%= child_2.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td class="text-center">
+                                        <ul class="icons-list">
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="icon-menu9"></i>
+                                                </a>
+                
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), naturesoft.edit_admin_article_category_path(child_2) %>
+                                                    </li>
+                                                    <li>
+                                                        <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft.admin_article_category_path(child_2), method: :delete, data: {confirm: 'Are you sure?'} %>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </tbody>
+            </table>
+            <div class="dataTables_wrapper no-footer">
+                <div class="datatable-footer showed">
+                    <div class="dataTables_info" ><%= page_entries_info @article_categories %></div>
+                    <div class="dataTables_paginate paging_simple_numbers">
+                        <%= will_paginate @article_categories, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- /basic datatable -->
