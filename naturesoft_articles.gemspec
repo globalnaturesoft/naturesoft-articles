@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
                   "sonnn@hoangkhang.com.vn",
                   "hungtn@hoangkhang.com.vn"]
   s.homepage    = "http://globalnaturesoft.com/"
-  s.summary     = "Core features of Global Naturesoft."
-  s.description = "Core features of Global Naturesoft."
+  s.summary     = "Article feature of Global Naturesoft."
+  s.description = "Article feature of Global Naturesoft."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

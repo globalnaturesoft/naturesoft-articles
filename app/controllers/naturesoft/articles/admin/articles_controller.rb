@@ -7,8 +7,8 @@ module Naturesoft
         
         # add top breadcrumb
         def default_breadcrumb
-          add_breadcrumb "Article", naturesoft.admin_articles_path
-          add_breadcrumb "Articles", naturesoft.admin_articles_path
+          add_breadcrumb "Article", naturesoft_articles.admin_articles_path
+          add_breadcrumb "Articles", naturesoft_articles.admin_articles_path
         end
     
         # GET /articles
@@ -23,30 +23,30 @@ module Naturesoft
         # GET /articles/new
         def new
           @article = Article.new
-          @article_categories = ArticleCategory.all
+          @categories = Category.all
           add_breadcrumb "New Article", nil,  class: "active"
         end
     
         # GET /articles/1/edit
         def edit
-          @article_categories = ArticleCategory.all
+          @categories = Category.all
           add_breadcrumb "Edit Article", nil,  class: "active"
         end
     
         # POST /articles
         def create
           @article = Article.new(article_params)
-          @article.article_categories.clear
+          @article.categories.clear
           @article.user = current_user
           
-          if params[:article_category_ids].present?
-            params[:article_category_ids].each do |id|      
-              @article.article_categories << ArticleCategory.find(id)
+          if params[:category_ids].present?
+            params[:category_ids].each do |id|      
+              @article.categories << Category.find(id)
             end
           end
     
           if @article.save
-            redirect_to naturesoft.edit_admin_article_path(@article.id), notice: 'Article was successfully created.'
+            redirect_to naturesoft_articles.edit_admin_article_path(@article.id), notice: 'Article was successfully created.'
           else
             render :new
           end
@@ -54,17 +54,17 @@ module Naturesoft
     
         # PATCH/PUT /articles/1
         def update
-          @article_categories = ArticleCategory.all
-          @article.article_categories.clear
+          @categories = Category.all
+          @article.categories.clear
           
-          if params[:article_category_ids].present?
-            params[:article_category_ids].each do |id|      
-              @article.article_categories << ArticleCategory.find(id)
+          if params[:category_ids].present?
+            params[:category_ids].each do |id|      
+              @article.categories << Category.find(id)
             end
           end
           
           if @article.update(article_params)
-            redirect_to naturesoft.edit_admin_article_path(@article.id), notice: 'Article was successfully updated.'
+            redirect_to naturesoft_articles.edit_admin_article_path(@article.id), notice: 'Article was successfully updated.'
           else
             render :edit
           end
@@ -73,7 +73,7 @@ module Naturesoft
         # DELETE /articles/1
         def destroy
           @article.destroy
-          redirect_to naturesoft.admin_articles_url, notice: 'Article was successfully destroyed.'
+          redirect_to naturesoft_articles.admin_articles_url, notice: 'Article was successfully destroyed.'
         end
         
         def approve

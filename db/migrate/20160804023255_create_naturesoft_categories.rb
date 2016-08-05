@@ -1,6 +1,6 @@
-class CreateNaturesoftArticleCategories < ActiveRecord::Migration[5.0]
+class CreateNaturesoftCategories < ActiveRecord::Migration[5.0]
   def change
-    create_table :naturesoft_articles_article_categories do |t|
+    create_table :naturesoft_articles_categories do |t|
       t.string :name
       t.text :description
       t.references :user, index: true, references: :naturesoft_users

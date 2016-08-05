@@ -1,4 +1,4 @@
-<% title t(:edit_article_category) %>
+<% title t(:edit_category) %>
 
 <!-- Horizontal form options -->
 <div class="row">
@@ -7,11 +7,11 @@
         <!-- Basic layout-->
         <div class="panel panel-flat">
             <div class="panel-heading">
-                <h5 class="panel-title"><%= t(:edit_article_category) %></h5>
+                <h5 class="panel-title"><%= t(:edit_category) %></h5>
             </div>
             
             <div class="panel-body">
-                <%= render 'form' %>
+                <%= render 'form', category: @category %>
             </div>
 
         </div>

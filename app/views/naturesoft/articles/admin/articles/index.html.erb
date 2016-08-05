@@ -1,7 +1,7 @@
 <% title t(:articles) %>
 
 <div class="text-right">
-    <%= link_to "#{t(:new_article)} <i class=\"icon-plus22 position-right\"></i>".html_safe, naturesoft.new_admin_article_path, class: 'btn btn-primary' %>
+    <%= link_to "#{t(:new_article)} <i class=\"icon-plus22 position-right\"></i>".html_safe, naturesoft_articles.new_admin_article_path, class: 'btn btn-primary' %>
 </div>
 <br />
 
@@ -77,13 +77,13 @@
         
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li>
-                                                <%= link_to '<i class="glyphicon glyphicon-ok"></i> '.html_safe + t(:approve), naturesoft.approve_admin_articles_path(id: item.id) %>
+                                                <%= link_to '<i class="glyphicon glyphicon-ok"></i> '.html_safe + t(:approve), naturesoft_articles.approve_admin_articles_path(id: item.id) %>
                                             </li>
                                             <li>
-                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), naturesoft.edit_admin_article_path(item) %>
+                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), naturesoft_articles.edit_admin_article_path(item) %>
                                             </li>
                                             <li>
-                                                <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft.admin_article_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
+                                                <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft_articles.admin_article_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
                                             </li>
                                         </ul>
                                     </li>

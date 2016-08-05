@@ -1,12 +1,10 @@
-Naturesoft::Core::Engine.routes.draw do
-  scope module: 'articles' do
-    namespace :admin do
-      resources :articles do
-        collection do
-          get 'approve'
-        end
+Naturesoft::Articles::Engine.routes.draw do
+  namespace :admin, module: "admin", path: "admin/content" do
+    resources :articles do
+      collection do
+        get "approve"
       end
-      resources :article_categories
     end
+    resources :categories
   end
 end
