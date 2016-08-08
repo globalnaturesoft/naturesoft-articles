@@ -13,7 +13,7 @@ module Naturesoft
     
         # GET /categories
         def index
-          @categories = Category.ordered
+          @categories = Category.search(params).paginate(:page => params[:page], :per_page => 200)
         end
     
         # GET /categories/1
@@ -67,15 +67,14 @@ module Naturesoft
           render text: 'Category was successfully destroyed.'
         end
         
+        #CHANGE STATUS /categories
         def enable
-          @category.status = "active"
-          @category.save
+          @category.enable
           render text: 'Category was successfully active.'
         end
         
         def disable
-          @category.status = "inactive"
-          @category.save
+          @category.disable
           render text: 'Category was successfully inactive.'
         end
     

@@ -45,5 +45,23 @@ module Naturesoft::Articles
       
       return records
     end
+    
+    # change approve
+    def approve
+			update_columns(approved: true)
+		end
+    
+    def disapprove
+			update_columns(approved: false)
+		end
+    
+    # change status
+    def enable
+			update_columns(status: "active")
+		end
+    
+    def disable
+			update_columns(status: "inactive")
+		end
   end
 end

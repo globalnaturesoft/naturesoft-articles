@@ -76,27 +76,25 @@ module Naturesoft
           render text: 'Article was successfully destroyed.'
         end
         
+        #CHANGE APPROVE /articles
         def approve
-          @article.approved = true
-          @article.save
+          @article.approve
           render text: 'Article was successfully approved.'
         end
         
         def disapprove
-          @article.approved = false
-          @article.save
+          @article.disapprove
           render text: 'Article was successfully disapproved.'
         end
         
+        #CHANGE STATUS /articles
         def enable
-          @article.status = "active"
-          @article.save
+          @article.enable
           render text: 'Article was successfully active.'
         end
         
         def disable
-          @article.status = "inactive"
-          @article.save
+          @article.disable
           render text: 'Article was successfully inactive.'
         end
         

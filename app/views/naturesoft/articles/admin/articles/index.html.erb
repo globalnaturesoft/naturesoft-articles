@@ -56,21 +56,17 @@
                 </thead>
                 <tbody>
                     <% @articles.each do |item| %>
-                        <tr<% if item.status == "active" %> class="success"<% else %> class="warning"<% end %>>
+                        <tr<% if item.approved == true %> class="success"<% end %><% if item.approved == false %> class="warning"<% end %>>
                             <td></td>
                             <td class="kp_search">
-                                <%= item.title %><br/><br/>
-                                <% if item.approved == true %>
-                                    <span class="label bg-success"><%= t(:approved) %></span>
-                                <% else %>
-                                    <span class="label bg-danger"><%= t(:not_yet_approved) %></span>
-                                <% end %>
+                                <%= item.title %><br>
+                                <%= display_status(item.status) %>
                             </td>
                             <td><%= truncate(strip_tags(item.content.html_safe), length: 150) %></td>
                             <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <%= link_to '<i class="icon-pencil"></i>'.html_safe, naturesoft_articles.edit_admin_article_path(item), class: "btn bg-teal btn-icon btn-xs" %>
+                                    <%= link_to '<i class="icon-pencil"></i>'.html_safe, naturesoft_articles.edit_admin_article_path(item), class: "btn bg-teal btn-icon btn-xs", title: item.title %>
                                     <button type="button" class="btn bg-teal dropdown-toggle btn-xs" data-toggle="dropdown"><span class="caret"></span></button>
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <% if item.approved == false %>
@@ -94,6 +90,7 @@
                                             <%= link_to '<i class="icon-unlocked"></i> '.html_safe + t(:active), naturesoft_articles.enable_admin_articles_path(id: item.id), method: :put %>
                                         </li>
                                         <% end %>
+                                    
                                         <li>
                                             <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft_articles.admin_article_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
                                         </li>
