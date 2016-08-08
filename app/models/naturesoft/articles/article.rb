@@ -19,17 +19,21 @@ module Naturesoft::Articles
       ]
     end
     
+    def self.status
+      [
+        ["All",""],
+        ["Active","true"],
+        ["Inactive","false"]
+      ]
+    end
+    
     #Filter, Sort
     def self.search(params)
       records = self.all
       
-      if params[:article_id].present?
-        records = records.where(article_id: params[:article_id])
-      end
-      
       #Search keyword filter
-      if params[:keywords].present?
-        params[:keywords].split(" ").each do |k|
+      if params[:keyword].present?
+        params[:keyword].split(" ").each do |k|
           records = records.where("LOWER(CONCAT(naturesoft_articles_articles.title)) LIKE ?", "%#{k.strip.downcase}%") if k.strip.present?
         end
       end

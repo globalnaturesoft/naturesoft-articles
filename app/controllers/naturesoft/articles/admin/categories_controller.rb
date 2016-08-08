@@ -2,7 +2,7 @@ module Naturesoft
   module Articles
     module Admin
       class CategoriesController < Naturesoft::Admin::AdminController
-        before_action :set_category, only: [:show, :edit, :update, :destroy]
+        before_action :set_category, only: [:show, :edit, :update, :enable, :disable, :destroy]
         before_action :default_breadcrumb
         
         # add top breadcrumb
@@ -13,7 +13,7 @@ module Naturesoft
     
         # GET /categories
         def index
-          @categories = Category.ordered.paginate(:page => params[:page], :per_page => 10)
+          @categories = Category.ordered
         end
     
         # GET /categories/1
@@ -64,7 +64,19 @@ module Naturesoft
         # DELETE /categories/1
         def destroy
           @category.destroy
-          redirect_to naturesoft_articles.admin_categories_url, notice: 'Category was successfully destroyed.'
+          render text: 'Category was successfully destroyed.'
+        end
+        
+        def enable
+          @category.status = "active"
+          @category.save
+          render text: 'Category was successfully active.'
+        end
+        
+        def disable
+          @category.status = "inactive"
+          @category.save
+          render text: 'Category was successfully inactive.'
         end
     
         private

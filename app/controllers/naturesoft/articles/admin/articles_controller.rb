@@ -2,7 +2,7 @@ module Naturesoft
   module Articles
     module Admin
       class ArticlesController < Naturesoft::Admin::AdminController
-        before_action :set_article, only: [:show, :edit, :approve, :update, :destroy]
+        before_action :set_article, only: [:show, :edit, :update, :approve, :disapprove, :enable, :disable, :destroy]
         before_action :default_breadcrumb
         
         # add top breadcrumb
@@ -73,17 +73,33 @@ module Naturesoft
         # DELETE /articles/1
         def destroy
           @article.destroy
-          redirect_to naturesoft_articles.admin_articles_url, notice: 'Article was successfully destroyed.'
+          render text: 'Article was successfully destroyed.'
         end
         
         def approve
-          @article = Article.find(params[:id])
-          
           @article.approved = true
           @article.save
-          redirect_to :back, notice: 'Article was successfully approved.'
+          render text: 'Article was successfully approved.'
         end
-    
+        
+        def disapprove
+          @article.approved = false
+          @article.save
+          render text: 'Article was successfully disapproved.'
+        end
+        
+        def enable
+          @article.status = "active"
+          @article.save
+          render text: 'Article was successfully active.'
+        end
+        
+        def disable
+          @article.status = "inactive"
+          @article.save
+          render text: 'Article was successfully inactive.'
+        end
+        
         private
           # Use callbacks to share common setup or constraints between actions.
           def set_article
@@ -92,7 +108,7 @@ module Naturesoft
     
           # Only allow a trusted parameter "white list" through.
           def article_params
-            params.require(:article).permit(:image_url, :approved, :title, :content, :user_id)
+            params.fetch(:article, {}).permit(:image_url, :approved, :title, :content, :user_id)
           end
       end
     end
