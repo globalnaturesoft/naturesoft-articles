@@ -1,7 +1,7 @@
-<% title t(:article_images) %>
+<% title t(:images) %>
 
 <div class="page_actions">
-    <%= link_to "#{t(:new_article_image)} <i class=\"icon-plus22 position-right\"></i>".html_safe, naturesoft_articles.new_admin_article_image_path, class: 'btn btn-primary' %>
+    <%= link_to "#{t(:new_image)} <i class=\"icon-plus22 position-right\"></i>".html_safe, naturesoft_articles.new_admin_image_path, class: 'btn btn-primary' %>
 </div>
 <br />
 
@@ -13,13 +13,13 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label><%= t(:sort_by) %></label>
-                        <%= select_tag(:sort_by, options_for_select(Naturesoft::Articles::ArticleImage.sort_by, :selected => params[:sort_by]), class: "select2") %>
+                        <%= select_tag(:sort_by, options_for_select(Naturesoft::Articles::Image.sort_by, :selected => params[:sort_by]), class: "select2") %>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label><%= t(:sort_orders) %></label>
-                        <%= select_tag(:sort_orders, options_for_select(Naturesoft::Articles::ArticleImage.sort_orders, :selected => params[:sort_orders]), class: "select2") %>
+                        <%= select_tag(:sort_orders, options_for_select(Naturesoft::Articles::Image.sort_orders, :selected => params[:sort_orders]), class: "select2") %>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -48,7 +48,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% @article_images.each do |item| %>
+                    <% @images.each do |item| %>
                         <tr<% if item.status == "active" %> class="success"<% else %> class="warning"<% end %>>
                             <td class="kq_search">
                                 <%= item.name %><br>
@@ -59,21 +59,21 @@
                             <td class="text-right">    
                                 <div class="btn-group">
                                     <ul class="icons-list">
-                                        <%= link_to '<i class="icon-pencil"></i>'.html_safe, naturesoft_articles.edit_admin_article_image_path(item), class: "btn bg-teal btn-icon btn-xs", title: item.name %>
+                                        <%= link_to '<i class="icon-pencil"></i>'.html_safe, naturesoft_articles.edit_admin_image_path(item), class: "btn bg-teal btn-icon btn-xs", title: item.name %>
                                         <button type="button" class="btn bg-teal dropdown-toggle btn-xs" data-toggle="dropdown"><span class="caret"></span></button>
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <% if item.status == "active" %>
                                             <li>
-                                                <%= link_to '<i class="icon-lock4"></i> '.html_safe + t(:inactive), naturesoft_articles.disable_admin_article_images_path(id: item.id), method: :put %>
+                                                <%= link_to '<i class="icon-lock4"></i> '.html_safe + t(:inactive), naturesoft_articles.disable_admin_images_path(id: item.id), method: :put %>
                                             </li>
                                             <% end %>
                                             <% if item.status == "inactive" %>
                                             <li>
-                                                <%= link_to '<i class="icon-unlocked"></i> '.html_safe + t(:active), naturesoft_articles.enable_admin_article_images_path(id: item.id), method: :put %>
+                                                <%= link_to '<i class="icon-unlocked"></i> '.html_safe + t(:active), naturesoft_articles.enable_admin_images_path(id: item.id), method: :put %>
                                             </li>
                                             <% end %>
                                             <li>
-                                                <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft_articles.admin_article_image_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
+                                                <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft_articles.admin_image_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
                                             </li>
                                         </ul>
                                     </ul>
@@ -85,9 +85,9 @@
             </table>
             <div class="dataTables_wrapper no-footer">
                 <div class="datatable-footer showed">
-                    <div class="dataTables_info" ><%= page_entries_info @article_images %></div>
+                    <div class="dataTables_info" ><%= page_entries_info @images %></div>
                     <div class="dataTables_paginate paging_simple_numbers">
-                        <%= will_paginate @article_images, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                        <%= will_paginate @images, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
                     </div>
                 </div>
             </div>

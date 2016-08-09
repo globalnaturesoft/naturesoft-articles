@@ -61,11 +61,11 @@ module Naturesoft
 			
 			# Thumb size from banner
 			def article_resize
-				if model.article_image.present? 
-					if model.article_image.image_style == "fill"
-						resize_to_fill(model.article_image.width, model.article_image.height)
-					elsif model.article_image.image_style == "fit"
-						resize_to_fit(model.article_image.width, model.article_image.height)
+				if model.image.present? 
+					if model.image.image_type == "fill"
+						resize_to_fill(model.image.width, model.image.height)
+					elsif model.image.image_type == "fit"
+						resize_to_fit(model.image.width, model.image.height)
 					else
 						resize_to_fill(400, 300)
 					end

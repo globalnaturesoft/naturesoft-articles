@@ -47,7 +47,7 @@
     <div class="form-group">
       <label class="col-lg-2 control-label" ><%= t(:article_image) %> <span class='text-danger'>*</span></label>
       <div class="col-lg-10">
-        <%= f.collection_select(:article_image_id, Naturesoft::Articles::ArticleImage.all, :id, :name, {:prompt=> "#{t(:choose_article_image)}"}, {class: "select2"}) %>
+        <%= f.collection_select(:image_id, Naturesoft::Articles::Image.all, :id, :name, {:prompt=> "#{t(:choose_image_type)}"}, {class: "select2"}) %>
       </div>
     </div>
         

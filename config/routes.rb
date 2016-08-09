@@ -8,7 +8,7 @@ Naturesoft::Articles::Engine.routes.draw do
         put "disable"
       end
     end
-    resources :article_images do
+    resources :images do
       collection do
         put "enable"
         put "disable"

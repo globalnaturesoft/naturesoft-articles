@@ -1,11 +1,11 @@
-<% if article_image.errors.any? %>
+<% if image.errors.any? %>
   <div class="alert alert-warning alert-bordered">
     <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
     <div id="error_explanation">
-      <h2><%= pluralize(article_image.errors.count, "error") %> prohibited this article image from being saved:</h2>
+      <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
   
       <ul>
-      <% article_image.errors.full_messages.each do |message| %>
+      <% image.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -13,7 +13,7 @@
   </div>
 <% end %>
 
-<%= form_for([naturesoft_articles, :admin, article_image], html: {class: "form-horizontal", id: "validate_checking"}) do |f| %>
+<%= form_for([naturesoft_articles, :admin, image], html: {class: "form-horizontal", id: "validate_checking"}) do |f| %>
     
     <div class="form-group">
         <label class="col-md-2 control-label" ><%= t(:name) %> <span class='text-danger'>*</span></label>
@@ -34,11 +34,11 @@
     </div>
         
     <div class="form-group">
-      <label class="col-md-2 control-label"><%= t(:image_style) %></label>
+      <label class="col-md-2 control-label"><%= t(:image_type) %></label>
       <div class="col-md-10">
-        <select class="select2" name="article_image[image_style]">
-          <option <%= "selected" if article_image.image_style == "fill" %> value="fill"><%= t(:fill) %></option>
-          <option <%= "selected" if article_image.image_style == "fit" %> value="fit"><%= t(:fit) %></option>
+        <select class="select2" name="image[image_type]">
+          <option <%= "selected" if image.image_type == "fill" %> value="fill"><%= t(:fill) %></option>
+          <option <%= "selected" if image.image_type == "fit" %> value="fit"><%= t(:fit) %></option>
         </select>
       </div>
     </div>

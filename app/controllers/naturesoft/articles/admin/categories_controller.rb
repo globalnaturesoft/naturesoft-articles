@@ -86,7 +86,7 @@ module Naturesoft
     
           # Only allow a trusted parameter "white list" through.
           def category_params
-            params.fetch(:category, {}).permit(:name, :description, :user_id, :level)
+            params.fetch(:category, {}).permit(:name, :description, :level, :status)
           end
       end
     end
