@@ -13,22 +13,22 @@
 <%= form_for([naturesoft_articles, :admin, category], html: {class: "form-horizontal", id: "validate_checking"}) do |f| %>
     
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:name) %> <span class='text-danger'>*</span></label>
-        <div class="col-lg-10">
+        <label class="col-md-2 control-label" ><%= t(:name) %> <span class='text-danger'>*</span></label>
+        <div class="col-md-10">
             <%= f.text_field :name, class: "form-control required" %>
         </div>
     </div>
         
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:description) %> <!--<span class='text-danger'>*</span>--></label>
-        <div class="col-lg-10">
+        <label class="col-md-2 control-label" ><%= t(:description) %> <!--<span class='text-danger'>*</span>--></label>
+        <div class="col-md-10">
             <%= f.text_area :description, rows: "5", cols: "5", class: "form-control" %>
         </div>
     </div>
         
     <div class="form-group">
-        <%= f.label t(:related_categories), class: "col-lg-2 control-label" %>
-        <div class="col-lg-10">
+        <%= f.label t(:related_categories), class: "col-md-2 control-label" %>
+        <div class="col-md-10">
             <div class="row-fluid">
                 <div class="radio">
                     <%= radio_button_tag 'parent_id', "", category.parent.empty?, id: "category_none", class: "styled-level-1" %>

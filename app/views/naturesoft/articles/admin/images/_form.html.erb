@@ -22,15 +22,23 @@
         </div>
     </div>
         
-    <div class="form-group">
-        <label class="col-md-2 control-label" ><%= t(:width) %> <span class='text-danger'>*</span></label>
-        <div class="col-md-4">
-            <%= f.text_field :width, class: "form-control required" %>
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        <div class="form-group">
+            <label class="col-md-4 control-label" ><%= t(:width) %> <span class='text-danger'>*</span></label>
+            <div class="col-md-8">
+                <%= f.text_field :width, class: "form-control required" %>
+            </div>
         </div>
-        <label class="col-md-2 control-label" ><%= t(:height) %> <span class='text-danger'>*</span></label>
-        <div class="col-md-4">
-            <%= f.text_field :height, class: "form-control required" %>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <div class="form-group">
+            <label class="col-md-4 control-label" ><%= t(:height) %> <span class='text-danger'>*</span></label>
+            <div class="col-md-8">
+                <%= f.text_field :height, class: "form-control required" %>
+            </div>
         </div>
+      </div>
     </div>
         
     <div class="form-group">
