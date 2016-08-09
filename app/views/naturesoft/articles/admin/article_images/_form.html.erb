@@ -1,0 +1,50 @@
+<% if article_image.errors.any? %>
+  <div class="alert alert-warning alert-bordered">
+    <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+    <div id="error_explanation">
+      <h2><%= pluralize(article_image.errors.count, "error") %> prohibited this article image from being saved:</h2>
+  
+      <ul>
+      <% article_image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<%= form_for([naturesoft_articles, :admin, article_image], html: {class: "form-horizontal", id: "validate_checking"}) do |f| %>
+    
+    <div class="form-group">
+        <label class="col-md-2 control-label" ><%= t(:name) %> <span class='text-danger'>*</span></label>
+        <div class="col-md-10">
+            <%= f.text_field :name, class: "form-control required" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <label class="col-md-2 control-label" ><%= t(:width) %> <span class='text-danger'>*</span></label>
+        <div class="col-md-4">
+            <%= f.text_field :width, class: "form-control required" %>
+        </div>
+        <label class="col-md-2 control-label" ><%= t(:height) %> <span class='text-danger'>*</span></label>
+        <div class="col-md-4">
+            <%= f.text_field :height, class: "form-control required" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+      <label class="col-md-2 control-label"><%= t(:image_style) %></label>
+      <div class="col-md-10">
+        <select class="select2" name="article_image[image_style]">
+          <option <%= "selected" if article_image.image_style == "fill" %> value="fill"><%= t(:fill) %></option>
+          <option <%= "selected" if article_image.image_style == "fit" %> value="fit"><%= t(:fit) %></option>
+        </select>
+      </div>
+    </div>
+
+    <div class="text-right">
+        <%= button_tag "#{t(:save)} <i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+    </div>
+    
+<% end %>

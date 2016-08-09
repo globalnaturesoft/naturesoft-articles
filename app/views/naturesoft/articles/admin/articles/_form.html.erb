@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<%= form_for([naturesoft_articles, :admin, article], html: {class: "form-horizontal", id: "validate_checking"}) do |f| %>
+<%= form_for([naturesoft_articles, :admin, article], html: {class: "form-horizontal", id: "validate_checking", multipart: true}) do |f| %>
 
     <div class="form-group">
       <label class="col-lg-2 control-label" ><%= t(:image) %> <span class='text-danger'>*</span></label>
@@ -42,6 +42,13 @@
                 <% end %>
             </select>
         </div>
+    </div>
+        
+    <div class="form-group">
+      <label class="col-lg-2 control-label" ><%= t(:article_image) %> <span class='text-danger'>*</span></label>
+      <div class="col-lg-10">
+        <%= f.collection_select(:article_image_id, Naturesoft::Articles::ArticleImage.all, :id, :name, {:prompt=> "#{t(:choose_article_image)}"}, {class: "select2"}) %>
+      </div>
     </div>
         
     <div class="form-group">
