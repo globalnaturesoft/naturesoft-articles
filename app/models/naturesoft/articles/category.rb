@@ -1,5 +1,6 @@
 module Naturesoft::Articles
   class Category < ApplicationRecord
+		validates :name, presence: true
     belongs_to :user
     has_and_belongs_to_many :articles
     has_many :parent_categories, dependent: :destroy

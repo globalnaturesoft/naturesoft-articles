@@ -53,26 +53,6 @@ module Naturesoft
 			version :system do
 				process :resize_to_fit => [60, 60]
 			end
-			
-			# Thumb size from banner
-			version :thumb do
-				process :article_resize
-			end 
-			
-			# Thumb size from banner
-			def article_resize
-				if model.image.present? 
-					if model.image.image_type == "fill"
-						resize_to_fill(model.image.width, model.image.height)
-					elsif model.image.image_type == "fit"
-						resize_to_fit(model.image.width, model.image.height)
-					else
-						resize_to_fill(400, 300)
-					end
-				else
-					resize_to_fill(400, 300)
-				end
-			end
     
     end
   end

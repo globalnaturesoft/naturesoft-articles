@@ -1,9 +1,14 @@
 module Naturesoft::Articles
   class Article < ApplicationRecord
 		mount_uploader :image_url, Naturesoft::Articles::ArticleUploader
+		validates :title, :content, presence: true
+		validates :image_url, presence: true
+		validates :image_url, allow_blank: true, format: {
+			with: %r{\.(gif|jpg|png)\Z}i,
+			message: 'must be a URL for GIF, JPG or PNG image.'
+		}
 		
     belongs_to :user
-    belongs_to :image
     has_and_belongs_to_many :categories
     
     scope :ordered, -> { order('created_at desc') }

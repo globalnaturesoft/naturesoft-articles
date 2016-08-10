@@ -8,12 +8,6 @@ Naturesoft::Articles::Engine.routes.draw do
         put "disable"
       end
     end
-    resources :images do
-      collection do
-        put "enable"
-        put "disable"
-      end
-    end
     resources :categories do
       collection do
         put "enable"

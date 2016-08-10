@@ -35,6 +35,7 @@ module Naturesoft
     
         # POST /articles
         def create
+          @categories = Category.all
           @article = Article.new(article_params)
           @article.categories.clear
           @article.user = current_user
