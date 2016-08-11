@@ -58,7 +58,7 @@
                     <% @articles.each do |item| %>
                         <tr<% if item.approved == true %> class="success"<% end %><% if item.approved == false %> class="warning"<% end %>>
                             <td>
-								<%= image_tag(item.image_url.system, size: "70x70", class: "img-rounded img-preview") %>
+								<%= image_tag(image_src(item.image_url), size: "70x70", class: "img-rounded img-preview") %>
 							</td>
                             <td class="kp_search">
                                 <%= item.title %><br>

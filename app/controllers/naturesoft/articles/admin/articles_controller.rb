@@ -23,19 +23,16 @@ module Naturesoft
         # GET /articles/new
         def new
           @article = Article.new
-          @categories = Category.all
           add_breadcrumb "New Article", nil,  class: "active"
         end
     
         # GET /articles/1/edit
         def edit
-          @categories = Category.all
           add_breadcrumb "Edit Article", nil,  class: "active"
         end
     
         # POST /articles
         def create
-          @categories = Category.all
           @article = Article.new(article_params)
           @article.categories.clear
           @article.user = current_user
@@ -55,7 +52,6 @@ module Naturesoft
     
         # PATCH/PUT /articles/1
         def update
-          @categories = Category.all
           @article.categories.clear
           
           if params[:category_ids].present?
