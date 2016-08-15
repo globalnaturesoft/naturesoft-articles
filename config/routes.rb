@@ -1,5 +1,5 @@
 Naturesoft::Articles::Engine.routes.draw do
-  namespace :admin, module: "admin", path: "admin/content" do
+  namespace :admin, module: "admin", path: "admin/articles" do
     resources :articles do
       collection do
         put "approve"
@@ -14,5 +14,8 @@ Naturesoft::Articles::Engine.routes.draw do
         put "disable"
       end
     end
+    
+    # Setting page
+    get 'settings' => 'options#index', :as => :options
   end
 end
