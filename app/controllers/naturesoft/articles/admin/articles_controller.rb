@@ -95,6 +95,13 @@ module Naturesoft
           render text: 'Article was successfully inactive.'
         end
         
+        # DELETE /articles/delete?ids=1,2,3
+        def delete
+          @articles = Article.where(id: params[:ids].split(","))
+          @articles.destroy_all
+          render text: 'Article(s) was successfully destroyed.'
+        end
+        
         private
           # Use callbacks to share common setup or constraints between actions.
           def set_article
