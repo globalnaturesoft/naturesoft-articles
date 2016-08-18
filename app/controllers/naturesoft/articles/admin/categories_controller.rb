@@ -13,7 +13,7 @@ module Naturesoft
     
         # GET /categories
         def index
-          @categories = Category.search(params).paginate(:page => params[:page], :per_page => 200)
+          @categories = Category.search(params).paginate(:page => params[:page], :per_page => Naturesoft::Option.get("articles", "categories_items_per_page"))
         end
     
         # GET /categories/1
@@ -76,6 +76,13 @@ module Naturesoft
         def disable
           @category.disable
           render text: 'Category was successfully inactive.'
+        end
+        
+        # DELETE /categories/delete?ids=1,2,3
+        def delete
+          @categories = Category.where(id: params[:ids].split(","))
+          @categories.destroy_all
+          render text: 'Category(s) was successfully destroyed.'
         end
     
         private

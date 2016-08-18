@@ -8,14 +8,19 @@ Naturesoft::Articles::Engine.routes.draw do
         put "approve"
         put "disapprove"
         put "enable"
-        put "disable"        
+        put "disable"
+        delete 'delete'
       end
     end
     resources :categories do
       collection do
         put "enable"
         put "disable"
+        delete 'delete'
       end
     end
+    
+    # Setting page
+    get 'settings' => 'options#index', :as => :options
   end
 end

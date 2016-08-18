@@ -13,7 +13,7 @@ module Naturesoft
     
         # GET /articles
         def index
-          @articles = Article.search(params).paginate(:page => params[:page], :per_page => 10)
+          @articles = Article.search(params).paginate(:page => params[:page], :per_page => Naturesoft::Option.get("articles", "items_per_page"))
         end
     
         # GET /articles/1
@@ -93,6 +93,13 @@ module Naturesoft
         def disable
           @article.disable
           render text: 'Article was successfully inactive.'
+        end
+        
+        # DELETE /articles/delete?ids=1,2,3
+        def delete
+          @articles = Article.where(id: params[:ids].split(","))
+          @articles.destroy_all
+          render text: 'Article(s) was successfully destroyed.'
         end
         
         private
