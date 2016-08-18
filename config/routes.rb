@@ -1,11 +1,14 @@
 Naturesoft::Articles::Engine.routes.draw do
+  # Frontend
+  get "/detail/:id.html" => "articles#detail", as: :detail_articles
+  
   namespace :admin, module: "admin", path: "admin/content" do
     resources :articles do
       collection do
         put "approve"
         put "disapprove"
         put "enable"
-        put "disable"
+        put "disable"        
       end
     end
     resources :categories do

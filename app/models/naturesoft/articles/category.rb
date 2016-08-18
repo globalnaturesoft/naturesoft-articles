@@ -54,5 +54,13 @@ module Naturesoft::Articles
 			update_columns(status: "inactive")
 		end
     
+    # get categories by level
+    def self.get_by_level(lvl)
+			self.where(level: 1)
+		end
+    
+    def get_newest_article(params)
+		end
+    
   end
 end
