@@ -24,7 +24,7 @@ Naturesoft::Option.class_eval do
     },
     "modules" => [{
       "code" => "articles_list",
-      "name" => "Articles list",
+      "label" => "Articles list",
       "attributes" => {
         "category" => {
           "label" => "Category",

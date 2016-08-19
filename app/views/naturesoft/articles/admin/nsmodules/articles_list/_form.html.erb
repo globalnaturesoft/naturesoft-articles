@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+        <label class="control-label" ><%= t(:category) %> <span class='text-danger'>*</span></label>
+        <div class="">
+            <% category = Naturesoft::Articles::Category.where(id: options["category_id"]).first %>
+            <% selected = options_for_select([[category.name,category.id]],1) if !category.nil? %>
+            <%= select_tag("options[category_id]",
+              selected,
+              {
+                class: "select2-ajax",
+                "data-url": naturesoft_articles.select2_admin_categories_path,
+                "data-excluded": category.id,
+              }
+            ) %>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+        <label class="control-label" ><%= t(:number_of_articles) %> <span class='text-danger'>*</span></label>
+        <div class="">
+            <%= text_field_tag "options[number_of_articles]", options["number_of_articles"], class: "form-control number_input required" %>
+        </div>
+    </div>
+  </div>  
+</div>

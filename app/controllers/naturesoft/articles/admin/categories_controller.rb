@@ -84,6 +84,11 @@ module Naturesoft
           @categories.destroy_all
           render text: 'Category(s) was successfully destroyed.'
         end
+        
+        # GET /categories/select2
+        def select2
+          render json: Category.select2(params)
+        end
     
         private
           # Use callbacks to share common setup or constraints between actions.
