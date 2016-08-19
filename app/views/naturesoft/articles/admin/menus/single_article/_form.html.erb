@@ -1,0 +1,14 @@
+    <div class="form-group">
+        <label class="col-md-2 control-label" ><%= t(:article) %> <span class='text-danger'>*</span></label>
+        <div class="col-md-10">
+            <% article = Naturesoft::Articles::Article.where(id: params["id"]).first %>
+            <% selected = options_for_select([[article.title,article.id]],1) if !article.nil? %>
+            <%= select_tag("params[id]",
+              selected,
+              {
+                class: "select2-ajax",
+                "data-url": naturesoft_articles.select2_admin_articles_path,
+              }
+            ) %>
+        </div>
+    </div>
