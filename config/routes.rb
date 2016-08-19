@@ -1,5 +1,9 @@
 Naturesoft::Articles::Engine.routes.draw do
-  namespace :admin, module: "admin", path: "admin/articles" do
+  # Frontend
+  #get "/detail/:id.html" => "articles#detail", as: :detail_articles
+  get "/:parent_title/:id/:title.html" => "categories#newest_article", as: :newest_article_categories
+  
+  namespace :admin, module: "admin", path: "admin/content" do
     resources :articles do
       collection do
         put "approve"

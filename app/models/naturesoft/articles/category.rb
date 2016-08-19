@@ -65,6 +65,32 @@ module Naturesoft::Articles
 			update_columns(status: "inactive")
 		end
     
+    # get categories by level
+    def self.get_by_level(lvl)
+			self.where(level: 1)
+		end
+    
+    def get_all_related_ids
+      arr = []
+      arr << self.id
+      self.children.each do |i1|
+          arr << i1.id
+          i1.children.each do |i2|
+              arr << i2.id
+              i2.children.each do |i3|
+                  arr << i3.id
+              end
+          end 
+      end
+      return arr
+		end
+    
+    # get article for category
+    def get_newest_article
+			record = Naturesoft::Articles::Article.joins(:categories).where(naturesoft_articles_categories: {id: self.get_all_related_ids}).uniq
+			return record.last
+    end
+
     # display name with parent
     def full_name
 			names = [self.name]
