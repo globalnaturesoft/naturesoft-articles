@@ -71,5 +71,16 @@ module Naturesoft::Articles
     def disable
 			update_columns(status: "inactive")
 		end
+    
+    # data for select2 ajax
+    def self.select2(params)
+			items = self.search(params)
+			if params[:excluded].present?
+				items = items.where.not(id: params[:excluded].split(","))
+			end
+			options = [{"id" => "nil", "text" => "none"}]
+			options += items.map { |c| {"id" => c.id, "text" => c.title} }
+			result = {"items" => options}
+		end
   end
 end

@@ -1,6 +1,6 @@
 Naturesoft::Articles::Engine.routes.draw do
   # Frontend
-  #get "/detail/:id.html" => "articles#detail", as: :detail_articles
+  get "/detail/:id.html" => "articles#detail", as: :detail_articles
   get "/:parent_title/:id/:title.html" => "categories#newest_article", as: :newest_article_categories
   
   namespace :admin, module: "admin", path: "admin/content" do
@@ -11,6 +11,7 @@ Naturesoft::Articles::Engine.routes.draw do
         put "enable"
         put "disable"
         delete 'delete'
+        get 'select2'
       end
     end
     resources :categories do

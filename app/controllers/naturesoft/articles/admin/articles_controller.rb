@@ -102,6 +102,11 @@ module Naturesoft
           render text: 'Article(s) was successfully destroyed.'
         end
         
+        # GET /articles/select2
+        def select2
+          render json: Article.select2(params)
+        end
+        
         private
           # Use callbacks to share common setup or constraints between actions.
           def set_article
