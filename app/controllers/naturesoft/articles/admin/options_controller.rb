@@ -9,8 +9,8 @@ module Naturesoft
           add_breadcrumb "Articles", naturesoft_articles.admin_articles_path
         end
     
-        # GET /partners
-        def index
+        # GET /update
+        def update
           add_breadcrumb "Settings", nil
           
           @options = Naturesoft::Option.options("articles")

@@ -16,8 +16,5 @@ Naturesoft::Articles::Engine.routes.draw do
         delete 'delete'
       end
     end
-    
-    # Setting page
-    get 'settings' => 'options#index', :as => :options
   end
 end
