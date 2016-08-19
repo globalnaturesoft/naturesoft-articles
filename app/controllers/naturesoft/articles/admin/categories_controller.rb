@@ -34,14 +34,9 @@ module Naturesoft
         # POST /categories
         def create
           @category = Category.new(category_params)
-          
           @category.user = current_user
     
           if @category.save
-            # update parent
-            @category.parent.clear
-            @category.parent << Category.find(params[:parent_id]) if params[:parent_id].present?
-            
             redirect_to naturesoft_articles.edit_admin_category_path(@category.id), notice: 'Category was successfully created.'
           else
             render :new
@@ -51,10 +46,6 @@ module Naturesoft
         # PATCH/PUT /categories/1
         def update
           if @category.update(category_params)
-            # update parent
-            @category.parent.clear
-            @category.parent << Category.find(params[:parent_id]) if params[:parent_id].present?
-        
             redirect_to naturesoft_articles.edit_admin_category_path(@category.id), notice: 'Category was successfully updated.'
           else
             render :edit
@@ -84,6 +75,11 @@ module Naturesoft
           @categories.destroy_all
           render text: 'Category(s) was successfully destroyed.'
         end
+        
+        # GET /menus/select2
+        def select2
+          render json: Category.select2(params)
+        end
     
         private
           # Use callbacks to share common setup or constraints between actions.
@@ -93,7 +89,7 @@ module Naturesoft
     
           # Only allow a trusted parameter "white list" through.
           def category_params
-            params.fetch(:category, {}).permit(:name, :description, :status)
+            params.fetch(:category, {}).permit(:name, :description, :status, :parent_id)
           end
       end
     end
