@@ -1,0 +1,18 @@
+<div class="panel panel-flat border-top-xlg border-top-teal-600">
+  <div class="panel-heading">
+    <h5 class="panel-title"><%= nsmodule.name %></h5>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <% category.articles.limit(options["number_of_articles"]).each do |article| %>
+        <li>
+          <a href="">
+            <%= article.title %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+  

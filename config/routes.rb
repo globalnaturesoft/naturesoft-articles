@@ -18,10 +18,8 @@ Naturesoft::Articles::Engine.routes.draw do
         put "enable"
         put "disable"
         delete 'delete'
+        get "select2"
       end
     end
-    
-    # Setting page
-    get 'settings' => 'options#index', :as => :options
   end
 end

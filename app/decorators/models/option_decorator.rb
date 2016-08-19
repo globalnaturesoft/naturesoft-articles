@@ -22,5 +22,23 @@ Naturesoft::Option.class_eval do
         "scale" => "fill"
       }
     },
+    "modules" => [{
+      "code" => "articles_list",
+      "label" => "Articles list",
+      "attributes" => {
+        "category" => {
+          "label" => "Category",
+          "type" => "select2-ajax",
+          "data-url" => "naturesoft_articles.select2_admin_categories_path",
+          "required" => true
+        },
+        "number_of_articles" => {
+          "label" => "",
+          "type" => "text",
+          "default" => 5,
+          "required" => true
+        }
+      }
+    }]
   }
 end
