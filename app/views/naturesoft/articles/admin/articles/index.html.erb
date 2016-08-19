@@ -65,7 +65,7 @@
                         </th>
                         <th><%= t(:image) %></th>
                         <th><%= t(:title) %></th>
-                        <th><%= t(:content) %></th>
+                        <td class="text-center"><%= t(:creator) %></td>
                         <th><%= t(:created_at) %></th>
                         <th class="text-center"><%= t(:actions) %></th>
                     </tr>
@@ -80,13 +80,13 @@
                                 />
                             </td>
 							<td>
-								<%= image_tag(image_src(item.image_url), size: "70x70", class: "img-rounded img-preview") %>
+								<a href="<%= naturesoft_articles.edit_admin_article_path(item) %>"><%= image_tag(image_src(item.image_url), size: "70x70", class: "img-rounded img-preview") %></a>
 							</td>
                             <td class="kp_search">
                                 <%= item.title %><br>
                                 <%= display_status(item.status) %>
                             </td>
-                            <td><%= truncate(strip_tags(item.content.html_safe), length: 150) %></td>
+                            <td class="text-center"><%= user_box(item.user) %></td>
                             <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                             <td class="text-center">
                                 <div class="btn-group">
