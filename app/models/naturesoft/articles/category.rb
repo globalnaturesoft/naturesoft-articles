@@ -59,7 +59,24 @@ module Naturesoft::Articles
 			self.where(level: 1)
 		end
     
-    def get_newest_article(params)
+    def get_all_related_ids
+      arr = []
+      arr << self.id
+      self.children.each do |i1|
+          arr << i1.id
+          i1.children.each do |i2|
+              arr << i2.id
+              i2.children.each do |i3|
+                  arr << i3.id
+              end
+          end 
+      end
+      return arr
+		end
+    
+    def get_newest_article
+			record = Naturesoft::Articles::Article.joins(:categories).where(naturesoft_articles_categories: {id: self.get_all_related_ids}).uniq
+			return record.last
 		end
     
   end
