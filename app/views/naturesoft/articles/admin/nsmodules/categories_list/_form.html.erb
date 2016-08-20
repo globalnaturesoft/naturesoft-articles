@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+        <label class="control-label" ><%= t(:parent) %> <span class='text-danger'>*</span></label>
+        <div class="">
+            <% parent_cat = Naturesoft::Articles::Category.where(id: options["parent_id"]).first %>
+            <% selected = options_for_select([[parent_cat.name,parent_cat.id]],1) if !parent_cat.nil? %>
+            <%= select_tag("options[parent_id]",
+              selected,
+              {
+                class: "select2-ajax",
+                "data-url": naturesoft_articles.select2_admin_categories_path,
+              }
+            ) %>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+        <label class="control-label" ><%= t(:number_of_categories) %> <span class='text-danger'>*</span></label>
+        <div class="">
+            <%= text_field_tag "options[number_of_categories]", options["number_of_categories"], class: "form-control number_input required" %>
+        </div>
+    </div>
+  </div>  
+</div>

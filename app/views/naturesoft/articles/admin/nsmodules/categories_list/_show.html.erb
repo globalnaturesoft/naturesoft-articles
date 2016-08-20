@@ -1,0 +1,22 @@
+<%
+  options = nsmodule.get_options
+  if options["parent_id"].present?
+    @category = Naturesoft::Articles::Category.find(options["parent_id"])
+  elsif params[:id].present?
+    @category = Naturesoft::Articles::Category.find(params[:id])
+  end
+%>
+
+<% if @category.present? and !@category.parent.nil? %>
+  <li class="widget widget-categories">
+    
+    <h4 class="widget-title"><span class="main-color"></span><%= @category.parent.name %></h4>
+    <div class="widget-content">
+      <ul>
+        <% @category.parent.children.each do |child_1| %>
+          <li<% if params[:id] == child_1.id.to_s %> class="active"<% end %>><%= link_to child_1.name, naturesoft_articles.newest_article_categories_path(id: child_1.id, parent_title: url_friendly(child_1.parent.name), title: url_friendly(child_1.name)) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </li>
+<% end %>
