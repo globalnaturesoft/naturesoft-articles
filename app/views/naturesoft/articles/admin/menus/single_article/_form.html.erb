@@ -3,13 +3,13 @@
     <div class="form-group">
       <label class="col-md-2 control-label" ><%= t(:path) %></label>
         <div class="col-md-10">
-            <h6 class="mb-0 text-semibold"><%= menu.url.html_safe %></h6 >
+            <h6 class="mb-0 text-semibold"><%= menu.path.html_safe %></h6 >
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-2 control-label" ><%= t(:article_id) %> <span class='text-danger'>*</span></label>
         <div class="col-md-10">            
-            <% selected = options_for_select([[article.title,article.id]],1) if !article.nil? %>
+            <% selected = options_for_select([[article.title,article.id]], article.id) if !article.nil? %>
             <%= select_tag("params[id]",
               selected,
               {

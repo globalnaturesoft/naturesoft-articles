@@ -9,13 +9,4 @@ Naturesoft::Menus::Menu.class_eval do
       }
     }
   }
-  
-  def url
-    article = Naturesoft::Articles::Article.where(id: get_params["id"]).first
-    if article.present?
-      self.path({title: article.title, category: article.categories.first.name})
-    else
-      return "...not generated!"
-    end
-  end
 end
