@@ -1,11 +1,4 @@
     <% article = Naturesoft::Articles::Article.where(id: params["id"]).first %>
-    
-    <div class="form-group">
-      <label class="col-md-2 control-label" ><%= t(:path) %></label>
-        <div class="col-md-10">
-            <h6 class="mt-0 text-semibold"><%= menu.path.html_safe %></h6>
-        </div>
-    </div>
     <div class="form-group">
         <label class="col-md-2 control-label" ><%= t(:article_id) %> <span class='text-danger'>*</span></label>
         <div class="col-md-10">
