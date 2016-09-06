@@ -40,11 +40,6 @@
         <label class="col-md-2 control-label" ><%= t(:category) %> <span class='text-danger'>*</span></label>
         <div class="col-md-10">
           <div class="input-group">
-            <!--<select name="category_ids[]" id="category_ids" class="multi-select2-article-categories" data-placeholder="<%= t(:placeholder_categories) %>..." multiple="multiple">
-                <% Naturesoft::Articles::Category.all.each do |item| %>
-                    <option <%= "selected" if article.categories.include?(item) %> value="<%= item.id %>"><%= item.full_name %></option>
-                <% end %>
-            </select>-->
             <% selected = options_for_select((article.categories.map {|c| [c.name, c.id]}),article.categories.map(&:id)) %>
             <%= select_tag("category_ids[]",
               selected,
