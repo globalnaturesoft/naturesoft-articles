@@ -4,7 +4,7 @@
         <label class="control-label" ><%= t(:parent) %> <span class='text-danger'>*</span></label>
         <div class="">
             <% parent_cat = Naturesoft::Articles::Category.where(id: options["parent_id"]).first %>
-            <% selected = options_for_select([[parent_cat.name,parent_cat.id]],1) if !parent_cat.nil? %>
+            <% selected = options_for_select([[parent_cat.name,parent_cat.id]],parent_cat.id) if !parent_cat.nil? %>
             <%= select_tag("options[parent_id]",
               selected,
               {
