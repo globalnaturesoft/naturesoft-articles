@@ -3,6 +3,12 @@ module Naturesoft
     class ArticlesController < Naturesoft::FrontendController
       before_action :get_article, only: [:detail]
       
+      def about_us
+      end
+      
+      def listing
+      end
+      
       def detail
       end
       

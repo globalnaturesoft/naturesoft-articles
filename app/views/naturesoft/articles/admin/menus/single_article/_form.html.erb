@@ -1,14 +1,14 @@
-    <% article = Naturesoft::Articles::Article.where(id: params["id"]).first %>
-    <div class="form-group">
-        <label class="col-md-2 control-label" ><%= t(:article_id) %> <span class='text-danger'>*</span></label>
-        <div class="col-md-10">
-            <% selected = options_for_select([[article.title,article.id]],article.id) if !article.nil? %>
-            <%= select_tag("params[id]",
-              selected,
-              {
-                class: "select2-ajax",
-                "data-url": naturesoft_articles.select2_admin_articles_path,
-              }
-            ) %>
-        </div>
+<% article = Naturesoft::Articles::Article.where(id: params["id"]).first %>
+<div class="form-group">
+    <label class="col-md-2 control-label" ><%= t(:article_id) %> <span class='text-danger'>*</span></label>
+    <div class="col-md-10">
+        <% selected = options_for_select([[article.title,article.id]],article.id) if !article.nil? %>
+        <%= select_tag("params[id]",
+          selected,
+          {
+            class: "select2-ajax",
+            "data-url": naturesoft_articles.select2_admin_articles_path,
+          }
+        ) %>
     </div>
+</div>
