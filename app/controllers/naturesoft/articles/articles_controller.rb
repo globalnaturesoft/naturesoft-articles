@@ -12,6 +12,9 @@ module Naturesoft
       def detail
       end
       
+      def faq
+      end
+      
       private
       def get_article
         @article = Naturesoft::Articles::Article.find(params[:id])
