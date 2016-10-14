@@ -8,6 +8,14 @@ if Naturesoft::Core.available?("menus")
         "params" => {
           "id" => nil
         }
+      },
+      "listing" => {
+        "label" => "Listing",
+        "controller" => "/naturesoft/articles/articles",
+        "action" => "listing",
+        "params" => {
+          "cat_id" => nil
+        }
       }
     }
   end
