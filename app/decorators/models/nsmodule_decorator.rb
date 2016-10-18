@@ -4,14 +4,16 @@ Naturesoft::Nsmodule.class_eval do
       "label" => "Articles list",
       "options" => {
         "category_id" => nil,
-        "number_of_articles" => 5
+        "number_of_articles" => 5,
+        "style" => "default"
       }    
     },
     "categories_list" => {
       "label" => "Categories list",
       "options" => {
         "parent_id" => nil,
-        "number_of_categories" => 5
+        "number_of_categories" => 5,
+        "style" => "default"
       }
     }
   }
