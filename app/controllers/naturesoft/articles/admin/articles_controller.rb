@@ -115,7 +115,7 @@ module Naturesoft
     
           # Only allow a trusted parameter "white list" through.
           def article_params
-            params.fetch(:article, {}).permit(:image_url, :approved, :title, :content, :status, :image_id)
+            params.fetch(:article, {}).permit(:image_url, :approved, :title, :content, :status, :image_id, :intro_text)
           end
       end
     end
