@@ -83,8 +83,20 @@ module Naturesoft::Articles
 			result = {"items" => options}
 		end
     
+    # get all articles
+    def self.get_all_article
+			Article.where(status: "active").where(approved: true)
+		end
+    
+    # get recent posts/newest articles
     def self.get_recent_posts(num=5)
-			Article.order("created_at desc").limit(5)
+			Article.get_all_article.order("created_at desc").limit(5)
+		end
+    
+    # get posts by category (module menus)
+    def self.get_posts_for_category(params)
+			records = Article.get_all_article.joins(:categories).where(naturesoft_articles_categories: {id: params[:cat_id]}).uniq
+			return records
 		end
   end
 end
