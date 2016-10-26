@@ -82,5 +82,9 @@ module Naturesoft::Articles
 			options += items.map { |c| {"id" => c.id, "text" => c.title} }
 			result = {"items" => options}
 		end
+    
+    def self.get_recent_posts(num=5)
+			Article.order("created_at desc").limit(5)
+		end
   end
 end
