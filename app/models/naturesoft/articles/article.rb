@@ -98,5 +98,9 @@ module Naturesoft::Articles
 			records = Article.get_all_article.joins(:categories).where(naturesoft_articles_categories: {id: params[:cat_id]}).uniq
 			return records
 		end
+    
+    def get_tags
+			tags.to_s.split(/[\,\;]/).select {|c| c.present? }
+		end
   end
 end
