@@ -73,6 +73,13 @@
             <%= f.text_area :content, rows: "4", cols: "4", class: "editor" %>
         </div>
     </div>
+        
+    <div class="form-group">
+        <label class="col-md-2 control-label" ><%= t(:tags) %> </label>
+        <div class="col-md-10">
+            <%= f.text_field :tags, class: "form-control" %>
+        </div>
+    </div>
 
     <div class="text-right">
         <%= button_tag "#{t(:save)} <i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
