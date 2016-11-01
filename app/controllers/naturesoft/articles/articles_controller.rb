@@ -8,7 +8,7 @@ module Naturesoft
       end
       
       def listing
-        @articles = Article.get_posts_for_category(params).paginate(:page => params[:page], :per_page => 4)
+        @articles = Article.search_frontend(params).paginate(:page => params[:page], :per_page => 5)
       end
       
       def detail

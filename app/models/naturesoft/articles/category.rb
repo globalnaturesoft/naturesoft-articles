@@ -113,5 +113,9 @@ module Naturesoft::Articles
 			result = {"items" => options}
 		end
     
+    def self.get_all_categories
+			self.where(status: 'active')
+		end
+    
   end
 end

@@ -102,5 +102,19 @@ module Naturesoft::Articles
     def get_tags
 			tags.to_s.split(/[\,\;]/).select {|c| c.present? }
 		end
+    
+    # Search for frontend
+    def self.search_frontend(params)
+      records = self.get_posts_for_category(params)
+      
+      #Search keyword filter
+      if params[:key].present?
+        params[:key].split(" ").each do |k|
+          records = records.where("LOWER(CONCAT(naturesoft_articles_articles.title)) LIKE ?", "%#{k.strip.downcase}%") if k.strip.present?
+        end
+      end      
+      return records
+    end
+    
   end
 end
