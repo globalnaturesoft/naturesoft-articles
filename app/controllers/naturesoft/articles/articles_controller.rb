@@ -2,7 +2,7 @@ module Naturesoft
   module Articles
     class ArticlesController < Naturesoft::FrontendController
       before_action :get_article, only: [:detail]
-      before_action :get_category, only: [:listing]
+      before_action :get_category, only: [:listing, :faq]
       
       def about_us
       end

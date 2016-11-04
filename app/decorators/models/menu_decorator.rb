@@ -16,6 +16,14 @@ if Naturesoft::Core.available?("menus")
         "params" => {
           "cat_id" => nil
         }
+      },
+      "categories_articles" => {
+        "label" => "FAQ (Categories Articles)",
+        "controller" => "/naturesoft/articles/articles",
+        "action" => "faq",
+        "params" => {
+          "cat_id" => nil
+        }
       }
     }
   end
