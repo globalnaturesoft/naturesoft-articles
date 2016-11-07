@@ -1,14 +1,14 @@
 module Naturesoft
   module Articles
-    module Admin
-      class CategoriesController < Naturesoft::Admin::AdminController
+    module Backend
+      class CategoriesController < Naturesoft::Backend::BackendController
         before_action :set_category, only: [:show, :edit, :update, :enable, :disable, :destroy]
         before_action :default_breadcrumb
         
         # add top breadcrumb
         def default_breadcrumb
-          add_breadcrumb "Article", naturesoft_articles.admin_categories_path
-          add_breadcrumb "Categories", naturesoft_articles.admin_categories_path
+          add_breadcrumb "Article", naturesoft_articles.backend_categories_path
+          add_breadcrumb "Categories", naturesoft_articles.backend_categories_path
         end
     
         # GET /categories
@@ -37,7 +37,7 @@ module Naturesoft
           @category.user = current_user
     
           if @category.save
-            redirect_to naturesoft_articles.edit_admin_category_path(@category.id), notice: 'Category was successfully created.'
+            redirect_to naturesoft_articles.edit_backend_category_path(@category.id), notice: 'Category was successfully created.'
           else
             render :new
           end
@@ -46,7 +46,7 @@ module Naturesoft
         # PATCH/PUT /categories/1
         def update
           if @category.update(category_params)
-            redirect_to naturesoft_articles.edit_admin_category_path(@category.id), notice: 'Category was successfully updated.'
+            redirect_to naturesoft_articles.edit_backend_category_path(@category.id), notice: 'Category was successfully updated.'
           else
             render :edit
           end

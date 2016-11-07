@@ -10,7 +10,7 @@
   <div class="addable-form" data-sample="thumbnail-size-form">
     <div class="addable-container">
       <% @options["articles"]["thumbnails"].each_with_index do |size, index| %>
-        <%= render 'naturesoft/articles/admin/options/thumbnail_size', size: size[1], index: index %>
+        <%= render 'naturesoft/articles/backend/options/thumbnail_size', size: size[1], index: index %>
       <% end %>
     </div>
     <a href="#add" class="btn btn-info addable-add">Add new size</a>
@@ -48,6 +48,6 @@
   
 <!-- thumbnail size sample form -->
 <div class="thumbnail-size-form hide">
-  <%= render 'naturesoft/articles/admin/options/thumbnail_size', size: {}, index: "<<index>>" %>
+  <%= render 'naturesoft/articles/backend/options/thumbnail_size', size: {}, index: "<<index>>" %>
 </div>
 <!--/thumbnail size sample form -->

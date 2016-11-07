@@ -13,7 +13,7 @@
   </div>
 <% end %>
 
-<%= form_for([naturesoft_articles, :admin, category], html: {class: "form-horizontal validate"}) do |f| %>
+<%= form_for([naturesoft_articles, :backend, category], html: {class: "form-horizontal validate"}) do |f| %>
     
     <div class="form-group">
         <label class="col-md-2 control-label" ><%= t(:name) %> <span class='text-danger'>*</span></label>
@@ -36,7 +36,7 @@
               nil,
               {
                 class: "select2-ajax",
-                "data-url": select2_admin_categories_path,
+                "data-url": select2_backend_categories_path,
                 "data-excluded": category.id,
                 "value": category.parent.present? ? category.parent.id : "",
                 "text": category.parent.present? ? category.parent.name : ""

@@ -1,4 +1,4 @@
-Naturesoft::Admin::AdminController.class_eval do
+Naturesoft::Backend::BackendController.class_eval do
   before_action :set_articles, only: :index
 
   private

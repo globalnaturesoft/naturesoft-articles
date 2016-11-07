@@ -1,14 +1,14 @@
 module Naturesoft
   module Articles
-    module Admin
-      class ArticlesController < Naturesoft::Admin::AdminController
+    module Backend
+      class ArticlesController < Naturesoft::Backend::BackendController
         before_action :set_article, only: [:show, :edit, :update, :approve, :disapprove, :enable, :disable, :destroy]
         before_action :default_breadcrumb
         
         # add top breadcrumb
         def default_breadcrumb
-          add_breadcrumb "Article", naturesoft_articles.admin_articles_path
-          add_breadcrumb "Articles", naturesoft_articles.admin_articles_path
+          add_breadcrumb "Article", naturesoft_articles.backend_articles_path
+          add_breadcrumb "Articles", naturesoft_articles.backend_articles_path
         end
     
         # GET /articles
@@ -44,7 +44,7 @@ module Naturesoft
           end
     
           if @article.save
-            redirect_to naturesoft_articles.edit_admin_article_path(@article.id), notice: 'Article was successfully created.'
+            redirect_to naturesoft_articles.edit_backend_article_path(@article.id), notice: 'Article was successfully created.'
           else
             render :new
           end
@@ -61,7 +61,7 @@ module Naturesoft
           end
           
           if @article.update(article_params)
-            redirect_to naturesoft_articles.edit_admin_article_path(@article.id), notice: 'Article was successfully updated.'
+            redirect_to naturesoft_articles.edit_backend_article_path(@article.id), notice: 'Article was successfully updated.'
           else
             render :edit
           end

@@ -1,5 +1,5 @@
 Naturesoft::Articles::Engine.routes.draw do
-  namespace :admin, module: "admin", path: "admin/content" do
+  namespace :backend, module: "backend", path: "backend/content" do
     resources :articles do
       collection do
         put "approve"

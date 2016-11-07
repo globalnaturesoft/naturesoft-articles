@@ -1,7 +1,7 @@
 <% title t(:articles) %>
 
 <div class="page_actions">
-    <%= link_to "#{t(:new_article)} <i class=\"icon-plus22 position-right\"></i>".html_safe, naturesoft_articles.new_admin_article_path, class: 'btn btn-primary' %>
+    <%= link_to "#{t(:new_article)} <i class=\"icon-plus22 position-right\"></i>".html_safe, naturesoft_articles.new_backend_article_path, class: 'btn btn-primary' %>
 </div>
 <br />
 
@@ -47,7 +47,7 @@
         </button>
         <ul class="dropdown-menu">											
             <li>
-                <a href="" data-href="<%= naturesoft_articles.delete_admin_articles_path %>" data-confirm="Are you sure!" data-method="DELETE">
+                <a href="" data-href="<%= naturesoft_articles.delete_backend_articles_path %>" data-confirm="Are you sure!" data-method="DELETE">
                     <i class="icon-enter"></i> Delete
                 </a>
             </li>            
@@ -81,7 +81,7 @@
                                 />
                             </td>
 							<td>
-								<a href="<%= naturesoft_articles.edit_admin_article_path(item) %>"><%= image_tag(image_src(item.image_url), size: "70x70", class: "img-rounded img-preview") %></a>
+								<a href="<%= naturesoft_articles.edit_backend_article_path(item) %>"><%= image_tag(image_src(item.image_url), size: "70x70", class: "img-rounded img-preview") %></a>
 							</td>
                             <td class="kp_search">
                                 <%= item.title %>                                
@@ -91,33 +91,33 @@
 							<td><%= display_status(item.status) %></td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <%= link_to '<i class="icon-pencil"></i>'.html_safe, naturesoft_articles.edit_admin_article_path(item), class: "btn bg-teal btn-icon btn-xs", title: item.title %>
+                                    <%= link_to '<i class="icon-pencil"></i>'.html_safe, naturesoft_articles.edit_backend_article_path(item), class: "btn bg-teal btn-icon btn-xs", title: item.title %>
                                     <button type="button" class="btn bg-teal dropdown-toggle btn-xs" data-toggle="dropdown"><span class="caret"></span></button>
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <% if item.approved == false %>
                                         <li>
-                                            <%= link_to '<i class="glyphicon glyphicon-ok"></i> '.html_safe + t(:approve), naturesoft_articles.approve_admin_articles_path(id: item.id), method: :put %>
+                                            <%= link_to '<i class="glyphicon glyphicon-ok"></i> '.html_safe + t(:approve), naturesoft_articles.approve_backend_articles_path(id: item.id), method: :put %>
                                         </li>
                                         <% end %>
                                         <% if item.approved == true %>
                                         <li>
-                                            <%= link_to '<i class="glyphicon glyphicon-remove"></i> '.html_safe + t(:disapprove), naturesoft_articles.disapprove_admin_articles_path(id: item.id), method: :put %>
+                                            <%= link_to '<i class="glyphicon glyphicon-remove"></i> '.html_safe + t(:disapprove), naturesoft_articles.disapprove_backend_articles_path(id: item.id), method: :put %>
                                         </li>
                                         <% end %>
                                     
                                         <% if item.status == "active" %>
                                         <li>
-                                            <%= link_to '<i class="icon-lock4"></i> '.html_safe + t(:inactive), naturesoft_articles.disable_admin_articles_path(id: item.id), method: :put %>
+                                            <%= link_to '<i class="icon-lock4"></i> '.html_safe + t(:inactive), naturesoft_articles.disable_backend_articles_path(id: item.id), method: :put %>
                                         </li>
                                         <% end %>
                                         <% if item.status == "inactive" %>
                                         <li>
-                                            <%= link_to '<i class="icon-unlocked"></i> '.html_safe + t(:active), naturesoft_articles.enable_admin_articles_path(id: item.id), method: :put %>
+                                            <%= link_to '<i class="icon-unlocked"></i> '.html_safe + t(:active), naturesoft_articles.enable_backend_articles_path(id: item.id), method: :put %>
                                         </li>
                                         <% end %>
                                     
                                         <li>
-                                            <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft_articles.admin_article_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
+                                            <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft_articles.backend_article_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
                                         </li>
                                     </ul>
                                 </div>

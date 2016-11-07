@@ -1,7 +1,7 @@
 <% title t(:categories) %>
 
 <div class="page_actions">
-    <%= link_to "#{t(:new_category)} <i class=\"icon-plus22 position-right\"></i>".html_safe, naturesoft_articles.new_admin_category_path, class: 'btn btn-primary' %>
+    <%= link_to "#{t(:new_category)} <i class=\"icon-plus22 position-right\"></i>".html_safe, naturesoft_articles.new_backend_category_path, class: 'btn btn-primary' %>
 </div>
 <br />
 
@@ -13,7 +13,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label><%= t(:parent) %></label>
-                        <%= select_tag(:parent_id, [], class: "select2-ajax", "data-url": select2_admin_categories_path) %>
+                        <%= select_tag(:parent_id, [], class: "select2-ajax", "data-url": select2_backend_categories_path) %>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -47,7 +47,7 @@
         </button>
         <ul class="dropdown-menu">											
             <li>
-                <a href="" data-href="<%= naturesoft_articles.delete_admin_articles_path %>" data-confirm="Are you sure!" data-method="DELETE">
+                <a href="" data-href="<%= naturesoft_articles.delete_backend_articles_path %>" data-confirm="Are you sure!" data-method="DELETE">
                     <i class="icon-enter"></i> Delete
                 </a>
             </li>            
@@ -81,7 +81,7 @@
                                 />
                             </td>
                             <td class="kq_search">
-                                <%= link_to item.full_name, naturesoft_articles.edit_admin_category_path(item), class: "text-semibold" %>                              
+                                <%= link_to item.full_name, naturesoft_articles.edit_backend_category_path(item), class: "text-semibold" %>                              
                             </td>
                             <td class="kq_search"><%= truncate(strip_tags(item.description), length: 150) %></td>                                                        
                             <td class="text-center"><%= user_box(item.user) %></td>
@@ -90,21 +90,21 @@
                             <td class="text-right">
                                 <div class="btn-group">
                                     <ul class="icons-list">
-                                        <%= link_to '<i class="icon-pencil"></i>'.html_safe, naturesoft_articles.edit_admin_category_path(item), class: "btn bg-teal btn-icon btn-xs", title: item.name %>
+                                        <%= link_to '<i class="icon-pencil"></i>'.html_safe, naturesoft_articles.edit_backend_category_path(item), class: "btn bg-teal btn-icon btn-xs", title: item.name %>
                                         <button type="button" class="btn bg-teal dropdown-toggle btn-xs" data-toggle="dropdown"><span class="caret"></span></button>
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <% if item.status == "active" %>
                                             <li>
-                                                <%= link_to '<i class="icon-lock4"></i> '.html_safe + t(:inactive), naturesoft_articles.disable_admin_categories_path(id: item.id), method: :put %>
+                                                <%= link_to '<i class="icon-lock4"></i> '.html_safe + t(:inactive), naturesoft_articles.disable_backend_categories_path(id: item.id), method: :put %>
                                             </li>
                                             <% end %>
                                             <% if item.status == "inactive" %>
                                             <li>
-                                                <%= link_to '<i class="icon-unlocked"></i> '.html_safe + t(:active), naturesoft_articles.enable_admin_categories_path(id: item.id), method: :put %>
+                                                <%= link_to '<i class="icon-unlocked"></i> '.html_safe + t(:active), naturesoft_articles.enable_backend_categories_path(id: item.id), method: :put %>
                                             </li>
                                             <% end %>
                                             <li>
-                                                <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft_articles.admin_category_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
+                                                <%= link_to '<i class="icon-cross2"></i> '.html_safe + t(:delete), naturesoft_articles.backend_category_path(item), method: :delete, data: {confirm: 'Are you sure?'} %>
                                             </li>
                                         </ul>
                                     </ul>
