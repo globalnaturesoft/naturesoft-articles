@@ -19,7 +19,7 @@ module Naturesoft
       
       private
         def get_article
-          @article = Naturesoft::Articles::Article.find(params[:id])
+          @article = Naturesoft::Articles::Article.find(params[:blog_id])
         end
         
         def get_category
