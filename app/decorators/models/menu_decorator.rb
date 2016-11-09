@@ -22,7 +22,8 @@ if Naturesoft::Core.available?("menus")
         "controller" => "/naturesoft/articles/articles",
         "action" => "faq",
         "params" => {
-          "cat_id" => nil
+          "cat_id" => nil,
+          "current_cat_id" => nil
         }
       }
     }
